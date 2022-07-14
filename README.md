@@ -7,12 +7,11 @@
 
 ## :small_blue_diamond: Project Overview
 
-•	Utilized dataset which contained many features of customer demographics, transaction data, and bank branch data required for predicting customer churn.
+•	Utilized dataset which contained the features web page id, domain, URL, and 9 predefined tags (classes) required for predicting the class of the web page.
 
-•	Performed extensive Exploratory Data Analysis (EDA) to select the best features.
+•	Performed Exploratory Data Analysis (EDA) for target exploration and extracted features using Bag of words, character-n-grams, TFIDF techniques.
 
-•	Models were trained using logistic regression and evaluated using different evaluation metrics. The rfe_top_10 model gave score of 
-AUC-ROC=0.8118, Recall=0.2253 and outperformed all three models.
+•	Models were trained using logistic regression, naive bayes, decision trees, and random forest and evaluated using weighted F1 score. The logistic regression model gave highest weighted F1 score= 0.7988 and outperformed other three models.
 
 ## :small_blue_diamond: Motivation/Purpose
 
@@ -28,6 +27,9 @@ AUC-ROC=0.8118, Recall=0.2253 and outperformed all three models.
 
 ## :small_blue_diamond: Dataset Overview
 
+<img src="https://user-images.githubusercontent.com/84275757/178946648-b120a701-3e84-49e2-8111-14b1365818d3.png" width="800" height="300" />
+
+
 In this case study, we are provided with URLs from 53000+ web pages. The dataset contains the following features:
 
 • web page_ID: Unique ID for the web page (1,2,3.... )
@@ -38,7 +40,7 @@ In this case study, we are provided with URLs from 53000+ web pages. The dataset
 
 • Tag (Target): Tag (class) of the web page
 
-Basically given the complete url, predict the tag a web page belongs to out of 9 predefined tags as given below:
+The 9 predefined tags are:-
 
 1. People profile
 2. Conferences/Congress
@@ -55,52 +57,13 @@ Basically given the complete url, predict the tag a web page belongs to out of 9
 
 The objective is to build a classifier that can classify the web pages into their respective classes (Each web page can belong to only 1 class).
 
-## :small_blue_diamond: Hypothesis Generation
-Some of the hypotheses are listed below:
-
-### Demographics
-•	Are females less likely to churn than males?
-
-•	Are young customers more likely to churn?
-
-•	Are customers located in Tier-1 cities more likely to churn?
-
-•	Are married people less likely to churn?
-
-•	Are older customers less likely to churn?
-
-•	Are customers in the lower income bracket more likely to churn?
-
-•	Are customers in the middle income bracket more likely to churn?
-
-•	Are customers in the higher income bracket more likely to churn?
-
-### Behaviour
-•	Are vintage customers less likely to churn?
-
-•	Are customers with higher average balance less likely to churn?
-
-•	Are customers dropping monthly balance high likely to churn?
-
-### Psychographic
-•	Do customers that are inherently more loyal less likely to churn?
-
-•	Do customers that have interest in sports more likely to churn?
-
-•	Do customers who go to movies often are highly likely to churn?
-
-### Other factors
-•	Customers getting a low rate of interest in fixed deposit compared to competitor banks are more likely to churn?
-
-•	Customers getting a low rate of interest in recurring deposit compared to competitor banks are more likely to churn?
-
-•	Customers incurring a high rate of interest in house loans compared to competitor banks are more likely to churn?
 
 
 ## :gear: Technologies Used
 ![Screenshot (151)](https://user-images.githubusercontent.com/84275757/173030213-f8e8a1d1-86d5-4782-abf1-928889fc6677.png)
 <img alt="numpy" src="https://user-images.githubusercontent.com/84275757/173030594-fba1e76a-d6c5-4928-ac77-4057b1028025.png" width="200" height="200" />
 <img src="https://user-images.githubusercontent.com/84275757/173031448-9e3e22df-53a6-480d-8a24-56c3b269a70a.png" width="250" height="200" />
+<img src="https://user-images.githubusercontent.com/84275757/178946219-fab6a2cf-c6a3-4615-9b45-df5a66fb692d.png" width="300" height="150" />
 <img src="https://user-images.githubusercontent.com/84275757/173031755-5d73c113-a4ca-4119-a693-885972be603b.png" width="350" height="150" />
 <img src="https://user-images.githubusercontent.com/84275757/173031858-ebcd32fb-88d0-459a-8147-8fcec5b462d5.png" width="200" height="200" />
 <img src="https://user-images.githubusercontent.com/84275757/173031918-1584d7ce-f852-4c47-a3bb-391fadff9a6d.png" width="300" height="200" />
@@ -110,7 +73,7 @@ Some of the hypotheses are listed below:
 
 :bulb: Note:- Please turn on Light theme in Github to see the below images properly (most captions and axes are not visible in dark theme).
 
-<img src="https://user-images.githubusercontent.com/84275757/173101975-d54eb319-941e-46b4-9fe2-97f6c2a267b0.png" width="500" height="700" />
+<img src="https://user-images.githubusercontent.com/84275757/178946982-7dd06c90-7b1a-495b-b074-945f6238373b.png" width="700" height="800" />
 
 ## :small_blue_diamond: Exploratory Data Analysis (EDA)
 Some snapshots from EDA 
