@@ -118,7 +118,7 @@ Group K fold Cross Validation (5 Fold) has been also used to prevent overfitting
 
 ## :small_blue_diamond: Model Performance
 
-The complete implementation of all models can be seen at [Web Page Classification notebook.](Web_Page_Classification.ipynb)
+The complete implementation of all models can be seen at [Web Page Classification notebook.](Web_Page_Classificaton.ipynb)
 
 The Naive Bayes model gave best score upto 
 Weighted F1 score= 0.7474
