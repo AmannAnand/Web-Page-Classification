@@ -99,7 +99,7 @@ In this wordcloud for thesis tag, we can see the commonly occurring words in the
 Done after EDA, to see any hidden patterns in raw data and avoid any bias.
 
 Here we simply have domain and URL and these are neither numeric nor categorical variable as each URL is unique. The URLs in the dataset can be considered as a single string since the words in the URL have no spaces. Instead, there are 2 types of separators here '/' and '-'. We can replace these by spaces and we can get individual words this way. 
-Therefore we can tokenize the words and do the necessary cleaning.
+Therefore tokenization of the words was done to do the necessary cleaning.
 
 ## :small_blue_diamond: Model Building
 
@@ -118,7 +118,7 @@ Group K fold Cross Validation (5 Fold) has been also used to prevent overfitting
 
 ## :small_blue_diamond: Model Performance
 
-The complete implementation of all models can be seen at [Customer Churn Prediction using Logistic Regression notebook.](Customer_Churn_Prediction_Logistic_Regression.ipynb)
+The complete implementation of all models can be seen at [Web Page Classification notebook.](Web_Page_Classification.ipynb)
 
 The Naive Bayes model gave best score upto 
 Weighted F1 score= 0.7474
