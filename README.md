@@ -11,7 +11,7 @@
 
 •	Performed Exploratory Data Analysis (EDA) for target exploration and extracted features using Bag of words, character-n-grams, TFIDF techniques.
 
-•	Models were trained using logistic regression, naive bayes, decision trees, and random forest and evaluated using weighted F1 score. The logistic regression model gave highest weighted F1 score= 0.7988 and outperformed other three models.
+•	Models were trained using logistic regression, naive bayes, decision trees, and random forest and evaluated using weighted F1 score. The logistic regression model gave highest weighted F1 score upto 0.7988 and outperformed other three models.
 
 ## :small_blue_diamond: Motivation/Purpose
 
@@ -77,87 +77,60 @@ The objective is to build a classifier that can classify the web pages into thei
 
 ## :small_blue_diamond: Exploratory Data Analysis (EDA)
 Some snapshots from EDA 
-### Univariate Analysis
 
-<img src="https://user-images.githubusercontent.com/84275757/173103836-eba4293a-7896-462f-aab2-586866534852.png" width="1000" height="300" />
-<img src="https://user-images.githubusercontent.com/84275757/173103990-251cfdba-89d7-45ef-a07a-447e99425ea2.png" width="600" height="400" />
+### Target Exploration
 
-### Bivariate Analysis
+<img src="https://user-images.githubusercontent.com/84275757/178948604-ffe41d68-91b2-4183-947d-67b2bd7d620a.png" width="700" height="400" />
+Here we look at frequency distribution of each tag. There are 2 major categories apart from others i.e news and publication. Public profiles, forums and conferences lie in the next bracket and guidelines have the lowest frequency in the dataset.
 
-<img src="https://user-images.githubusercontent.com/84275757/173104066-ca35dea8-7a66-4d96-ab52-dcc2373b0497.png" width="1000" height="300" />
-<img src="https://user-images.githubusercontent.com/84275757/173104117-b84bfce8-c85f-4d26-abd3-21c7bf2e086b.png" width="600" height="400" />
+### Understanding the common words used in the URLs: WordCloud
 
-### Multivariate Analysis
+<img src="https://user-images.githubusercontent.com/84275757/178954644-98c44c6b-01b6-4979-9821-25567c364300.png" width="700" height="400" />
 
-<img src="https://user-images.githubusercontent.com/84275757/173104598-4b09f363-39b6-4b28-9c6c-3f73eb6bf16f.png" width="700" height="400" />
-<img src="https://user-images.githubusercontent.com/84275757/173104277-357b86c0-d23e-4128-95c2-4be34870b8b2.png" width="600" height="400" />
+In this wordcloud, we can see the commonly occurring words in the dataset that are in ranking according to their sizes like biomedcentral articles is the biggest word, hence the most occurring one. Other words like org content, article https, find doctor also have good frequency in the dataset.
 
-Complete EDA in detail can be seen in [EDA Notebook.](Customer_Churn_Prediction_EDA.ipynb)
+<img src="https://user-images.githubusercontent.com/84275757/178955442-1244f425-5309-4b42-a21a-d8f9f817e1ab.png" width="700" height="400" />
 
-## :small_blue_diamond: Conclusions from EDA
-•	For debit values, we see that there is a significant difference in the distribution for churn and non churn and it might be turn out to be an important feature
-
-•	For all the balance features the lower values have much higher proportion of churning customers
-
-•	For most frequent vintage values, the churning customers are slightly higher, while for higher values of vintage, we have mostly non churning customers which is in sync with the age variable
-
-•	We see significant difference for different occupations and certainly would be interesting to use as a feature for prediction of churn.
+In this wordcloud for thesis tag, we can see the commonly occurring words in the dataset that are in ranking according to their sizes like edu, handle is the biggest word, hence the most occurring one. Other words like https, ecommons, library also have good frequency in the dataset. Similarly for all tags, wordclouds can be built to get a visual understanding of the data.
 
 
-## :small_blue_diamond: Data Preproccessing
-
-Done after EDA, to see any hidden patterns in raw data and avoid any bias.
-### Missing values
-Gender: It had some missing values but since there was a good mix of males and females and arguably missing values cannot be filled with any one of them. A seperate category was created by assigning the value -1 for all missing values in this column.
-
-Dependents, occupation and city: The missing values in these columns were filled with mode of respective columns.
-
-Days since Last Transaction: A fair assumption was made on this column as this is number of days since last transaction in 1 year, we can substitute missing values with a value greater than 1 year say 999.
-
-### Preprocessing
-There were a lot of outliers in the dataset especially when it comes to previous and current balance features. Also, the distributions are skewed for these features, so two steps were taken to deal with that here:
-
-1. Log Transformation
-
-2. 	Standard Scaler
  
 ## :small_blue_diamond: Model Building
 
-Three separate models were built and trained using logistic regression.
-1.	Model with all features 
-2.	Model with baseline features
-3.	Model with top 10 features obtained from reverse feature elimination (RFE)
+This is a multi-class classification problem. The train and test data split should done based on Domain-Tag combination, such that no 2 URLs for the same class and domain are kept in the train and test respectively because in that case domain can be directly mapped to the tag and that would be a leakage.
+
+The 4 models were built using:
+1. Logistic Regression
+2. Naive Bayes
+3. Decision Tree
+4. Random Forest
 
 ## :small_blue_diamond: Evaluation metrics
 
-Since this is a binary classification problem, we could use the following 2 popular metrics:
-1.	Recall
-2.	Area under the Receiver operating characteristic curve (AUC-ROC)
-
-Now, we are looking at the recall value here because a customer falsely marked as churn would not be as bad as a customer who was not detected as a churning customer and appropriate measures were not taken by the bank to stop him/her from churning
-
-The ROC AUC is the area under the curve when plotting the (normalized) true positive rate (x-axis) and the false positive rate (y-axis).
-Our main metric here would be Recall values, while AUC ROC Score would take care of how well predicted probabilites are able to differentiate between the 2 classes.
-
+Since this a muslti-classification problem we will use weighted F1 score which basically assigns weights proportional to the class frequency in the train set.
 Cross Validation (5 Fold) has been also used to prevent overfitting.
 
 ## :small_blue_diamond: Model Performance
 
-The complete implementation of all models using logistic regression can be seen at [Customer Churn Prediction using Logistic Regression notebook.](Customer_Churn_Prediction_Logistic_Regression.ipynb)
+The complete implementation of all models can be seen at [Customer Churn Prediction using Logistic Regression notebook.](Customer_Churn_Prediction_Logistic_Regression.ipynb)
 
-The all features model gave best score of 
-AUC-ROC=0.8058, Recall=0.2405
+The Naive Bayes model gave best score upto 
+Weighted F1 score= 0.7474
 
-The baseline model gave best score of
-AUC-ROC=0.7822, Recall=0.1236
+The Logistic Rehression model gave best score upto
+Weighted F1 score= 0.7988
 
-The rfe_top_10 model gave best score of 
-AUC-ROC=0.8118, Recall=0.2253
+The Decision Tree model gave best score upto
+Weighted F1 score= 0.6500
 
-<img src="https://user-images.githubusercontent.com/84275757/173106395-4657cc7f-2da3-4055-b2aa-a760882e60a5.png" width="500" height="300" />
+The Random Forest model gave best score upto
+Weighted F1 score= 0.7319
 
 
-Thus, rfe_top_10 model performed the best among all the three models.
+<img src="https://user-images.githubusercontent.com/84275757/178959662-b0d8e5e9-265e-4571-9480-561a6f15ff05.png" width="700" height="300" />
+
+
+With this visual depiction, we can clearly see that Logistic Regression is getting the best performance and interestingly Tree Based methods are performing badly. Though the scores are not very stable due to the large number of classes and few samples. With better data and amount of samples, score can be improved and we can use ensemble methods to get a better classifier model for web pages.
 
 
 
