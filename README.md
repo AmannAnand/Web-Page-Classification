@@ -91,10 +91,16 @@ In this wordcloud, we can see the commonly occurring words in the dataset that a
 
 <img src="https://user-images.githubusercontent.com/84275757/178955442-1244f425-5309-4b42-a21a-d8f9f817e1ab.png" width="700" height="400" />
 
-In this wordcloud for thesis tag, we can see the commonly occurring words in the dataset that are in ranking according to their sizes like edu, handle is the biggest word, hence the most occurring one. Other words like https, ecommons, library also have good frequency in the dataset. Similarly for all tags, wordclouds can be built to get a visual understanding of the data.
+In this wordcloud for thesis tag, we can see the commonly occurring words in the dataset that are in ranking according to their sizes like edu, handle is the biggest word, hence the most occurring one. Other words like https, ecommons, library also have good frequency in the dataset. Similarly for all tags, wordclouds can be built to get a better visual understanding of the data.
 
 
- 
+## :small_blue_diamond: Data Preproccessing
+
+Done after EDA, to see any hidden patterns in raw data and avoid any bias.
+
+Here we simply have domain and URL and these are neither numeric nor categorical variable as each URL is unique. The URLs in the dataset can be considered as a single string since the words in the URL have no spaces. Instead, there are 2 types of separators here '/' and '-'. We can replace these by spaces and we can get individual words this way. 
+Therefore we can tokenize the words and do the necessary cleaning.
+
 ## :small_blue_diamond: Model Building
 
 This is a multi-class classification problem. The train and test data split should done based on Domain-Tag combination, such that no 2 URLs for the same class and domain are kept in the train and test respectively because in that case domain can be directly mapped to the tag and that would be a leakage.
@@ -107,8 +113,8 @@ The 4 models were built using:
 
 ## :small_blue_diamond: Evaluation metrics
 
-Since this a muslti-classification problem we will use weighted F1 score which basically assigns weights proportional to the class frequency in the train set.
-Cross Validation (5 Fold) has been also used to prevent overfitting.
+Since this a multi-classification problem we will use weighted F1 score which basically assigns weights proportional to the class frequency in the train set.
+Group K fold Cross Validation (5 Fold) has been also used to prevent overfitting. In group K-Fold, the same group will not appear in two different folds. The folds are approximately balanced in the sense that the number of distinct groups is approximately the same in each fold.
 
 ## :small_blue_diamond: Model Performance
 
@@ -121,7 +127,7 @@ The Logistic Rehression model gave best score upto
 Weighted F1 score= 0.7988
 
 The Decision Tree model gave best score upto
-Weighted F1 score= 0.6500
+Weighted F1 score= 0.6521
 
 The Random Forest model gave best score upto
 Weighted F1 score= 0.7319
